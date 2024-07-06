@@ -7,9 +7,20 @@ Game::Game() {
 Game::~Game() {
 }
 
+void Game::Update() {
+	for (auto& laser : spaceship.lasers) {
+		laser.Update();
+	}
+}
+
 void Game::Draw() {
 	spaceship.Draw();
+
+	for (auto& laser : spaceship.lasers) {
+		laser.Draw();
+	}
 }
+
 
 void Game::HandleInput() {
 	if (IsKeyDown(KEY_LEFT)) {
@@ -17,5 +28,8 @@ void Game::HandleInput() {
 	}
 	else if (IsKeyDown(KEY_RIGHT)) {
 		spaceship.MoveRight();
+	}
+	else if (IsKeyDown(KEY_DOWN)) {
+		spaceship.FireLaser();
 	}
 }
