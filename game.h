@@ -11,5 +11,6 @@ public:
 	void HandleInput();
 
 private:
-	Spaceship spaceship;
+	Spaceship spaceship; 
+	void DeleteInactiveLasers();
 };

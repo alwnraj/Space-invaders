@@ -30,7 +30,7 @@ void Spaceship::MoveRight() {
 }
 
 void Spaceship::FireLaser() {
-	if(GetTime() - lastFireTime >=0.35){
+	if(GetTime() - lastFireTime >=0.35){ // makes sure that user can only shoot in short bursts!
 		lasers.push_back(Laser({ position.x + image.width / 2 - 2 , position.y }, -6));
 		lastFireTime = GetTime();
 	}

@@ -33,3 +33,8 @@ void Game::HandleInput() {
 		spaceship.FireLaser();
 	}
 }
+
+void Game::DeleteInactiveLasers()
+{
+
+}
