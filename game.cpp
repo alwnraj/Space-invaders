@@ -14,7 +14,8 @@ void Game::Update() {
 	}
 
 	DeleteInactiveLasers(); // Calling the function defined below
-	std::cout << "Vector Size: " << spaceship.lasers.size() << std::endl;
+	//std::cout << "Vector Size: " << spaceship.lasers.size() << std::endl; 
+	/*Vector size increases as we fire lasers but when they move outside the screen they get killed off and the size goes to zero*/
 }
 
 void Game::Draw() {

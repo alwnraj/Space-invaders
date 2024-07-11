@@ -130,14 +130,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="block.cpp" />
     <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="spaceship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="block.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="laser.h" />
+    <ClInclude Include="obstacle.h" />
     <ClInclude Include="spaceship.h" />
   </ItemGroup>
   <ItemGroup>
