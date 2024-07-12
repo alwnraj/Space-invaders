@@ -5,8 +5,8 @@
 class Obstacle
 {
 public:
-	Obstacle();
-	~Obstacle();
+	Obstacle(Vector2 position);
+	void Draw();
 
 private:
 
