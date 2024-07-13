@@ -9,16 +9,9 @@ public:
 	void Draw();
 	Vector2 position;
 	std::vector<Block> blocks;
-	std::vector<std::vector<int>> grid;
+	static std::vector<std::vector<int>> grid;
 
 private:
 
 };
 
-Obstacle::Obstacle()
-{
-}
-
-Obstacle::~Obstacle()
-{
-}

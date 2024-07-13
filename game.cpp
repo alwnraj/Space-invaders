@@ -2,6 +2,7 @@
 #include <iostream>
 
 Game::Game() {
+	obstacles = CreateObstacles();
 
 }
 
@@ -23,6 +24,10 @@ void Game::Draw() {
 
 	for (auto& laser : spaceship.lasers) {
 		laser.Draw();
+	}
+
+	for (auto& obstacle : obstacles) {
+		obstacle.Draw();
 	}
 }
 
@@ -49,4 +54,17 @@ void Game::DeleteInactiveLasers()
 			++it;
 		}
 	}
+}
+
+std::vector<Obstacle> Game::CreateObstacles()
+{
+	int Obstaclewidth = Obstacle::grid[0].size() * 3; //i.e the grid has grid[0].size() no. of coluomns.
+	float gap = (GetScreenWidth() - (4 * Obstaclewidth))/3; //Here, we have 4 obstacles and there are 5 gaps
+	
+	for (int i = 0; i < 4; i++) {
+		float OffsetX = (i * 1) * gap + i * Obstaclewidth; //Places the obstacles in the right place
+		obstacles.push_back(Obstacle({ OffsetX, float(GetScreenHeight() - 100) })); //adds the Obstacle object into the obstacles vector
+	}
+
+	return obstacles;
 }

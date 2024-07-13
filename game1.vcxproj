@@ -130,13 +130,16 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="alien.cpp" />
     <ClCompile Include="block.cpp" />
     <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="spaceship.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="alien.h" />
     <ClInclude Include="block.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="laser.h" />
@@ -144,6 +147,9 @@
     <ClInclude Include="spaceship.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="alien_1.png" />
+    <Image Include="alien_2.png" />
+    <Image Include="alien_3.png" />
     <Image Include="spaceship.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
