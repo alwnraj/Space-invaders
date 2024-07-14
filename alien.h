@@ -8,7 +8,9 @@ public:
 	void Update();
 	void Draw();
 	int GetType();
-	Texture2D image;
+	//Texture2D image;
+	static Texture2D alienImages[3];// Going to store the three alien images in this array
+	static void UnloadImages();
 	int type;
 	Vector2 position;
 
