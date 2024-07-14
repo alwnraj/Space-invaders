@@ -35,9 +35,13 @@ int Alien::GetType() {
 	return type;
 }
 
-void Alien::UnloadImages()
+void Alien::UnloadImages() //Unloads the images 
 {
 	for (int i = 0; i < 4; i++) {
 		UnloadTexture(alienImages[i]);
 	}
+}
+
+void Alien::Update(int direction) {
+	position.x += direction; //the position of the alien updates with direction throughout the x-axis
 }
