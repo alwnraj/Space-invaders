@@ -106,8 +106,33 @@ std::vector<Alien> Game::CreateAliens()
 	return aliens;
 }
 
+std::vector<Laser> Game::AlienshootLaser()
+{
+	int randomindex = GetRandomValue(0, aliens.size() - 1);//creates random no. to index for the aliens
+	Alien& alien = aliens[randomindex];
+	alienLasers.push_back(Laser({ alien.position.x + alien.alienImages[alien.type - 1].width / 2, alien.position.y + alien.alienImages[alien.type - 1].height }, 6));// Needs more clarification
+}
+
 void Game::MoveAliens() {
 	for (auto& alien : aliens) {
+
+		if (alien.position.x + alien.alienImages[alien.type - 1].width > GetScreenWidth()) {
+			aliendirection = - 1;
+			MoveDownAliens(4);
+		}
+		if (alien.position.x < 0) {
+			aliendirection = 1;
+			MoveDownAliens(4);
+		}
+
 		alien.Update(aliendirection);
+	}
+}
+
+void Game::MoveDownAliens(int distance)
+{
+	for(auto& alien:aliens)
+	{
+		alien.position.y += distance;
 	}
 }

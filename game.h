@@ -16,9 +16,12 @@ private:
 	Spaceship spaceship; 
 	void DeleteInactiveLasers();
 	void MoveAliens();
+	void MoveDownAliens(int distance);
 	std::vector<Obstacle> obstacles;
 	std::vector<Obstacle> CreateObstacles();
 	std::vector<Alien> aliens;
 	std::vector<Alien> CreateAliens();
 	int aliendirection;
+	std::vector<Laser>AlienshootLaser();
+	std::vector<Laser> alienLasers;
 };
