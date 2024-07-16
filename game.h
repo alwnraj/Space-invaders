@@ -22,6 +22,8 @@ private:
 	std::vector<Alien> aliens;
 	std::vector<Alien> CreateAliens();
 	int aliendirection;
-	std::vector<Laser>AlienshootLaser();
-	std::vector<Laser> alienLasers;
+	void AlienshootLaser();
+	std::vector<Laser> alienLasers; 
+	constexpr static float alienLaserShootInterval = 0.35; // constexpr stands for constant expression
+	float TimelastAlienFired;
 };

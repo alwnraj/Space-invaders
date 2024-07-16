@@ -5,7 +5,7 @@ Game::Game() {
 	obstacles = CreateObstacles();
 	aliens = CreateAliens();
 	aliendirection = 1;
-
+	TimelastAlienFired = 0;
 }
 
 Game::~Game() {
@@ -18,6 +18,14 @@ void Game::Update() {
 	}
 
 	MoveAliens();
+
+
+	AlienshootLaser();
+
+	for (auto& laser : alienLasers) {
+		laser.Update();
+	}
+
 
 	DeleteInactiveLasers(); // Calling the function defined below
 	//std::cout << "Vector Size: " << spaceship.lasers.size() << std::endl; 
@@ -37,6 +45,10 @@ void Game::Draw() {
 
 	for (auto& aliens : aliens) { // Draws the purple aliens
 		aliens.Draw();
+	}
+
+	for (auto& laser : alienLasers) {
+		laser.Draw();
 	}
 }
 
@@ -58,6 +70,15 @@ void Game::DeleteInactiveLasers()
 	for (auto it = spaceship.lasers.begin(); it != spaceship.lasers.end();) { //Created an 'it' vector and an iterator to go through it.
 		if (!it->active) {						//The iterator go through and sees if any of the lasers are active or not.  
 			it = spaceship.lasers.erase(it); //If is any inactive lasers, it gets removed
+		}
+		else { // if the element is active, iterator moves to the next element
+			++it;
+		}
+	}
+
+	for (auto it = alienLasers.begin(); it != alienLasers.end();) { //Created an 'it' vector and an iterator to go through it.
+		if (!it->active) {						//The iterator go through and sees if any of the lasers are active or not.  
+			it = alienLasers.erase(it); //If is any inactive lasers, it gets removed
 		}
 		else { // if the element is active, iterator moves to the next element
 			++it;
@@ -106,11 +127,20 @@ std::vector<Alien> Game::CreateAliens()
 	return aliens;
 }
 
-std::vector<Laser> Game::AlienshootLaser()
+void Game::AlienshootLaser()
 {
-	int randomindex = GetRandomValue(0, aliens.size() - 1);//creates random no. to index for the aliens
-	Alien& alien = aliens[randomindex];
-	alienLasers.push_back(Laser({ alien.position.x + alien.alienImages[alien.type - 1].width / 2, alien.position.y + alien.alienImages[alien.type - 1].height }, 6));// Needs more clarification
+	double currentTime = GetTime();
+	if (currentTime - TimelastAlienFired >= alienLaserShootInterval && !aliens.empty()) 
+	{
+		int randomindex = GetRandomValue(0, aliens.size() - 1);//creates random no. to index for the aliens
+		Alien& alien = aliens[randomindex];
+		alienLasers.push_back(Laser({ alien.position.x + alien.alienImages[alien.type - 1].width / 2, alien.position.y + alien.alienImages[alien.type - 1].height }, 6));// Needs more clarification?
+
+		TimelastAlienFired = GetTime();
+
+	}
+
+
 }
 
 void Game::MoveAliens() {
