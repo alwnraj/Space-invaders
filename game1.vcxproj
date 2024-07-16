@@ -143,6 +143,7 @@
     <ClInclude Include="block.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="laser.h" />
+    <ClInclude Include="mysteryship.h" />
     <ClInclude Include="obstacle.h" />
     <ClInclude Include="spaceship.h" />
   </ItemGroup>
