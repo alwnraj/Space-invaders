@@ -135,6 +135,7 @@
     <ClCompile Include="laser.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="mysteryship.cpp" />
     <ClCompile Include="obstacle.cpp" />
     <ClCompile Include="spaceship.cpp" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <Image Include="alien_1.png" />
     <Image Include="alien_2.png" />
     <Image Include="alien_3.png" />
+    <Image Include="mystery_ship.png" />
     <Image Include="spaceship.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
