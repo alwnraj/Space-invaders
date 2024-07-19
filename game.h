@@ -30,4 +30,5 @@ private:
 	Mysteryship mysteryship;
 	float mysteryship_spawn_interval;
 	float time_last_spawn;
+	void Check_Collisions();
 };

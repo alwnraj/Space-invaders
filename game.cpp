@@ -44,6 +44,8 @@ void Game::Update() {
 
 	mysteryship.Update();
 
+	Check_Collisions();
+
 }
 
 void Game::Draw() {
@@ -157,6 +159,24 @@ void Game::AlienshootLaser()
 	}
 
 
+}
+
+void Game::Check_Collisions()
+{
+	//Spaceship lasers
+	for (auto& laser : spaceship.lasers) {
+		auto it = aliens.begin(); //iterator to point towards the beginning of the aliens vector
+		while (it != aliens.end()) {
+			if (CheckCollisionRecs(it->getRect(), laser.getRect())) //The CheckCollisionRecs, a built-in function in raylib, checks if there is a collision between two rectangles
+			{
+				it = aliens.erase(it); // removes the alien in the iterator and points to the next alien in the vector
+				laser.active = false;
+			}
+			else {
+				++it; //if there was no collision the iterator moves to the next item in the vector
+			}
+		}
+	}
 }
 
 void Game::MoveAliens() {
