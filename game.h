@@ -12,6 +12,7 @@ public:
 	void Draw();
 	void Update();
 	void HandleInput();
+	bool run;
 
 private:
 	Spaceship spaceship; 
@@ -31,4 +32,6 @@ private:
 	float mysteryship_spawn_interval;
 	float time_last_spawn;
 	void Check_Collisions();
+	int Lives;
+	void GameOver();
 };
