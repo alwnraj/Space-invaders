@@ -158,7 +158,6 @@ void Game::AlienshootLaser()
 
 	}
 
-
 }
 
 void Game::Check_Collisions()
@@ -175,6 +174,35 @@ void Game::Check_Collisions()
 			else {
 				++it; //if there was no collision the iterator moves to the next item in the vector
 			}
+		}
+
+		// Checks the collisions for the four obstacles
+		for (auto& obstacle : obstacles) {  
+			auto it = obstacle.blocks.begin();
+			while ( it != obstacle.blocks.end()) {
+				if (CheckCollisionRecs(it->getRect(), laser.getRect())) { 
+					it = obstacle.blocks.erase(it);// As soon as the laser hits the block, the block get removed from the vector
+					laser.active = false; // After hitting the block the laser becomes inactive and dissapears
+				}
+				else
+				{
+					++it;
+				}
+			}
+		}
+		//Checks collisions with Mystery alien ship
+		if (CheckCollisionRecs(mysteryship.getRect(), laser.getRect())) {
+			mysteryship.alive = false;
+			laser.active = false;
+		}
+	}
+
+	// Alien Lasers
+
+	for (auto& laser : alienLasers) {
+		if (CheckCollisionRecs(laser.getRect(), spaceship.getRect())) {
+			std::cout<<"Spaceship hit!"<<std::endl;
+			laser.active = false;
 		}
 	}
 }
