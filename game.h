@@ -34,4 +34,6 @@ private:
 	void Check_Collisions();
 	int Lives;
 	void GameOver();
+	void Reset();
+	void InitGame();
 };
