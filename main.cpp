@@ -44,8 +44,6 @@ int main(void)
         DrawTextEx(font, "SCORE", { 50,15 }, 34, 2, ORANGE);
 
         std::string numbertext = std::to_string(game.score); //Counts the score
-       /* int leadingzeros = 5 - numbertext.length();
-        numbertext = std::string(leadingzeros, '0') + numbertext;*/
         DrawTextEx(font, numbertext.c_str(), { 50,40 }, 34, 2, ORANGE);
 
         game.Draw();
