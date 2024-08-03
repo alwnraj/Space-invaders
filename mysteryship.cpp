@@ -15,12 +15,12 @@ void Mysteryship::Spawn() {
 	int side = GetRandomValue(0, 1); //the mystery ship will spawn randomly on either side of the screen; left = 0 and right =1
 
 	if (side == 0) {
-		position.x = 0;
+		position.x = 25;
 		speed = 3;
 	}
 	else
 	{
-		position.x = GetScreenWidth() - image.width;
+		position.x = GetScreenWidth() - image.width -25;
 		speed = -3;
 	}
 	alive = true;
@@ -39,7 +39,7 @@ Rectangle Mysteryship::getRect()
 void Mysteryship::Update() {
 	if (alive) {
 		position.x += speed;
-		if (position.x > GetScreenWidth() - image.width || position.x < 0) { //If the ship goes out of the frame, ship dies
+		if (position.x > GetScreenWidth() - image.width || position.x < 25) { //If the ship goes out of the frame, ship dies
 			alive = false;
 		}
 	}
@@ -50,3 +50,4 @@ void Mysteryship::Draw() {
 		DrawTextureV(image, position, WHITE);
 	}
 }
+

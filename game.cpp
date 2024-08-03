@@ -48,6 +48,7 @@ void Game::Update() {
 	{
 		if (IsKeyDown(KEY_ENTER)) {
 			Reset();
+			InitGame();
 		}
 	}
 
@@ -112,11 +113,11 @@ void Game::DeleteInactiveLasers()
 std::vector<Obstacle> Game::CreateObstacles()
 {
 	int Obstaclewidth = Obstacle::grid[0].size() * 3; //i.e the grid has grid[0].size() no. of coluomns.
-	float gap = (GetScreenWidth() - (4 * Obstaclewidth))/3; //Here, we have 4 obstacles and there are 5 gaps
+	float gap = (GetScreenWidth() - (4 * Obstaclewidth))/2.8; //Here, we have 4 obstacles and there are 5 gaps
 	
 	for (int i = 0; i < 4; i++) {
-		float OffsetX = (i * 1) * gap + i * Obstaclewidth; //Places the obstacles in the right place
-		obstacles.push_back(Obstacle({ OffsetX, float(GetScreenHeight() - 100) })); //adds the Obstacle object into the obstacles vector
+		float OffsetX = (i * 0.8) * gap + i * Obstaclewidth + 35; //Places the obstacles in the right place
+		obstacles.push_back(Obstacle({ OffsetX, float(GetScreenHeight() - 200) })); //adds the Obstacle object into the obstacles vector
 	}
 
 	return obstacles;
@@ -175,6 +176,19 @@ void Game::Check_Collisions()
 			{
 				it = aliens.erase(it); // removes the alien in the iterator and points to the next alien in the vector
 				laser.active = false;
+
+				if (it->type == 1) // if the spaceship laser hits alien of type 1 user gets 10 points, etc. etc.
+				{
+					score += 10;
+				}
+				else if (it->type == 2)
+				{
+					score += 20;
+				}
+				else if (it->type == 3) {
+
+					score += 30;
+				}
 			}
 			else {
 				++it; //if there was no collision the iterator moves to the next item in the vector
@@ -199,6 +213,7 @@ void Game::Check_Collisions()
 		if (CheckCollisionRecs(mysteryship.getRect(), laser.getRect())) {
 			mysteryship.alive = false;
 			laser.active = false;
+			score += 50;
 		}
 	}
 
@@ -267,17 +282,18 @@ void Game::InitGame()
 	mysteryship_spawn_interval = GetRandomValue(10, 20);
 	Lives = 3;
 	run = true;
+	score = 0;
 
 }
 
 void Game::MoveAliens() {
 	for (auto& alien : aliens) {
 
-		if (alien.position.x + alien.alienImages[alien.type - 1].width > GetScreenWidth()) {
+		if (alien.position.x + alien.alienImages[alien.type - 1].width > GetScreenWidth() - 25) {
 			aliendirection = - 1;
 			MoveDownAliens(4);
 		}
-		if (alien.position.x < 0) {
+		if (alien.position.x < 25) {
 			aliendirection = 1;
 			MoveDownAliens(4);
 		}

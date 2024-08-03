@@ -83,4 +83,9 @@
       <Filter>Source Files</Filter>
     </Image>
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="monogram.ttf">
+      <Filter>Source Files</Filter>
+    </Font>
+  </ItemGroup>
 </Project>
