@@ -1,6 +1,6 @@
 #include "obstacle.h"
 
-std::vector<std::vector<int>> Obstacle::grid = { // This grid will serve as a reference for the 'block'. This grid attribute is accessible to the game class
+std::vector<std::vector<int>> Obstacle::grid = { // This grid will serve as a reference for the 'block'. 
     {0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0},
     {0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0},
     {0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0},
